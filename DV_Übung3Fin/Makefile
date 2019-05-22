@@ -56,7 +56,9 @@ SOURCES       = horizontalslicerenderer.cpp \
 		mainwindow.cpp \
 		opengldisplaywidget.cpp \
 		datavolumeboundingboxrenderer.cpp \
-		flowdatasource.cpp moc_mainwindow.cpp \
+		flowdatasource.cpp \
+		horizontalslicetocontourlinemapper.cpp \
+		horizontalcontourlinesrenderer.cpp moc_mainwindow.cpp \
 		moc_opengldisplaywidget.cpp
 OBJECTS       = horizontalslicerenderer.o \
 		horizontalslicetoimagemapper.o \
@@ -65,6 +67,8 @@ OBJECTS       = horizontalslicerenderer.o \
 		opengldisplaywidget.o \
 		datavolumeboundingboxrenderer.o \
 		flowdatasource.o \
+		horizontalslicetocontourlinemapper.o \
+		horizontalcontourlinesrenderer.o \
 		moc_mainwindow.o \
 		moc_opengldisplaywidget.o
 DIST          = bbox_fshader.glsl \
@@ -164,13 +168,17 @@ DIST          = bbox_fshader.glsl \
 		mainwindow.h \
 		opengldisplaywidget.h \
 		datavolumeboundingboxrenderer.h \
-		flowdatasource.h horizontalslicerenderer.cpp \
+		flowdatasource.h \
+		horizontalslicetocontourlinemapper.h \
+		horizontalcontourlinesrenderer.h horizontalslicerenderer.cpp \
 		horizontalslicetoimagemapper.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		opengldisplaywidget.cpp \
 		datavolumeboundingboxrenderer.cpp \
-		flowdatasource.cpp
+		flowdatasource.cpp \
+		horizontalslicetocontourlinemapper.cpp \
+		horizontalcontourlinesrenderer.cpp
 QMAKE_TARGET  = VisualizationAndGPUComputing
 DESTDIR       = 
 TARGET        = VisualizationAndGPUComputing
@@ -382,8 +390,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents horizontalslicerenderer.h horizontalslicetoimagemapper.h mainwindow.h opengldisplaywidget.h datavolumeboundingboxrenderer.h flowdatasource.h $(DISTDIR)/
-	$(COPY_FILE) --parents horizontalslicerenderer.cpp horizontalslicetoimagemapper.cpp main.cpp mainwindow.cpp opengldisplaywidget.cpp datavolumeboundingboxrenderer.cpp flowdatasource.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents horizontalslicerenderer.h horizontalslicetoimagemapper.h mainwindow.h opengldisplaywidget.h datavolumeboundingboxrenderer.h flowdatasource.h horizontalslicetocontourlinemapper.h horizontalcontourlinesrenderer.h $(DISTDIR)/
+	$(COPY_FILE) --parents horizontalslicerenderer.cpp horizontalslicetoimagemapper.cpp main.cpp mainwindow.cpp opengldisplaywidget.cpp datavolumeboundingboxrenderer.cpp flowdatasource.cpp horizontalslicetocontourlinemapper.cpp horizontalcontourlinesrenderer.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -478,6 +486,13 @@ datavolumeboundingboxrenderer.o: datavolumeboundingboxrenderer.cpp datavolumebou
 
 flowdatasource.o: flowdatasource.cpp flowdatasource.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o flowdatasource.o flowdatasource.cpp
+
+horizontalslicetocontourlinemapper.o: horizontalslicetocontourlinemapper.cpp horizontalslicetocontourlinemapper.h \
+		flowdatasource.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o horizontalslicetocontourlinemapper.o horizontalslicetocontourlinemapper.cpp
+
+horizontalcontourlinesrenderer.o: horizontalcontourlinesrenderer.cpp horizontalcontourlinesrenderer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o horizontalcontourlinesrenderer.o horizontalcontourlinesrenderer.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

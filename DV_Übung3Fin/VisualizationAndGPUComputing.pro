@@ -30,7 +30,9 @@ SOURCES += \
         mainwindow.cpp \
     opengldisplaywidget.cpp \
     datavolumeboundingboxrenderer.cpp \
-	flowdatasource.cpp
+	flowdatasource.cpp \
+    horizontalslicetocontourlinemapper.cpp \
+    horizontalcontourlinesrenderer.cpp
 
 HEADERS += \
     horizontalslicerenderer.h \
@@ -38,7 +40,9 @@ HEADERS += \
         mainwindow.h \
     opengldisplaywidget.h \
     datavolumeboundingboxrenderer.h \
-	flowdatasource.h
+	flowdatasource.h \
+    horizontalslicetocontourlinemapper.h \
+    horizontalcontourlinesrenderer.h
 
 DISTFILES += \
     bbox_fshader.glsl \

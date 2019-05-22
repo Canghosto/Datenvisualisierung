@@ -1,7 +1,7 @@
 #include "flowdatasource.h"
 #include <QImage>
 #include <QColor>
-
+#include <vector>
 
 #ifndef HORIZONTALSLICETOCONTOURLINEMAPPER_H
 #define HORIZONTALSLICETOCONTOURLINEMAPPER_H

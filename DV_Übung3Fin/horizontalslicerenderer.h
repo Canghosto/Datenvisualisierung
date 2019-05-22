@@ -14,7 +14,6 @@ public:
     void setMapper(HorizontalSliceToImageMapper *mapper);
     void changeGeometry(float z);
     void drawImage(QMatrix4x4 matrix);
-    void drawImage(QMatrix4x4 matrix, int z);
     void moveSlice(int z);
     float height = 0;
 private:

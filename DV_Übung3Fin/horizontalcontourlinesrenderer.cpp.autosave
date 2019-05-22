@@ -1,0 +1,16 @@
+#include "horizontalcontourlinesrenderer.h"
+
+HorizontalContourLinesRenderer::HorizontalContourLinesRenderer()
+{
+    
+}
+
+HorizontalContourLinesRenderer::~HorizontalContourLinesRenderer()
+{
+    
+}
+
+void HorizontalContourLinesRenderer::setMapper(HorizontalSliceToContourLineMapper *mapper)
+{
+    
+}

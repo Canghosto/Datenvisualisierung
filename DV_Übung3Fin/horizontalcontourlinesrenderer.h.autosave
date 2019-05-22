@@ -12,12 +12,10 @@ class HorizontalContourLinesRenderer
 {
 public:
     HorizontalContourLinesRenderer();
+    ~HorizontalContourLinesRenderer();
     void setMapper(HorizontalSliceToContourLineMapper *mapper);
-    void changeGeometry(float z);
-    void drawImage(QMatrix4x4 matrix);
 private:
     void initOpenGLShaders();
-    void initBoundingBoxGeometry();
 
     QOpenGLShaderProgram shaderProgram;
     QOpenGLBuffer vertexBuffer;
