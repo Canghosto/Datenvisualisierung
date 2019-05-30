@@ -1,4 +1,6 @@
 #include "horizontalslicetocontourlinemapper.h"
+#include <QVector>
+#include <QVector3D>
 
 HorizontalSliceToContourLineMapper::HorizontalSliceToContourLineMapper()
 {
@@ -15,33 +17,42 @@ void HorizontalSliceToContourLineMapper::setDataSource(FlowDataSource *dataSourc
     m_dataSource = dataSource;
 }
 
-void HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices()
+float HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float verticesOne, float verticesTwo, float threshold)
 {
-
+    float isoVertice;
+    if(verticesOne > verticesTwo){
+        isoVertice = verticesOne -((verticesOne - verticesTwo)/2);
+    }
+    else{
+        isoVertice = verticesTwo -((verticesTwo - verticesOne)/2);
+    }
+    return isoVertice;
 }
 
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(int iz)
 {
-//    QVector<QVector3D> list;
-//    QVector3D *data = list.data();
+    float threshold = 0;
+    QVector<QVector3D> list;
+    QVector3D *data = list.data();
 
-//    for(int y = 0; y < 16;y++)
-//    {
-//        for(int x = 0; x < 16;x++)
-//        {
-//            //Transformation in Rot oder Blau
-//            float threshold = m_dataSource->getDataValue(iz,y,x,0); //Komponente 0 soll verwendet werden -> ic = 0
-//            if(threshold > 0)
-//            {
+    for(int y = 0; y < 15;y++)
+    {
+        for(int x = 0; x < 15;x++)
+        {
+            float dataSource = m_dataSource->getDataValue(iz,y,x,0);
+            float dataSource2 = m_dataSource->getDataValue(iz,y+1,x,0);
+            float dataSource3 = m_dataSource->getDataValue(iz,y,x+1,0);
+            float dataSource4 = m_dataSource->getDataValue(iz,y+1,x+1,0);
+            if(dataSource){
 
-//                QColor color(0,0,0);
-//                //data[x] = color;
+            }
+            list.append(isoCroosingBetweenTwoVertices(dataSource, dataSource2, threshold));
 
-//            }
 
-//        }
-//    }
-//    return list;
+            //data[x][y] = isoCroosingBetweenTwoVertices();
+        }
+    }
+    return list;
 }
 
 

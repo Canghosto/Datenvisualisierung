@@ -12,7 +12,7 @@ public:
     HorizontalSliceToContourLineMapper();
     ~HorizontalSliceToContourLineMapper();
     void setDataSource(FlowDataSource *dataSource);
-    void isoCroosingBetweenTwoVertices();
+    float isoCroosingBetweenTwoVertices(float verticesOne, float verticesTwo, float threshold);
     QVector<QVector3D> mapSliceToContourLineSegments(int iz);
 
 private:
