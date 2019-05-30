@@ -5,6 +5,8 @@
 #include "flowdatasource.h"
 #include "horizontalslicetoimagemapper.h"
 #include "horizontalslicerenderer.h"
+#include "horizontalcontourlinesrenderer.h"
+#include "horizontalslicerenderer.h"
 #include "datavolumeboundingboxrenderer.h"
 
 
@@ -48,9 +50,11 @@ private:
 
     FlowDataSource *dataSource;
     HorizontalSliceToImageMapper *horizontalMapper;
+    HorizontalSliceToContourLineMapper *horizontalContourMapper;
     DataVolumeBoundingBoxRenderer *bboxRenderer;
-    HorizontalSliceRenderer *horizontalRenderer;
 
+    HorizontalSliceRenderer *horizontalRenderer;
+    HorizontalContourLinesRenderer *horizontalContourRenderer;
     // Initialize the pipeline (create instances of data source, mapping,
     // rendering etc. modules and connect them).
     void initVisualizationPipeline();

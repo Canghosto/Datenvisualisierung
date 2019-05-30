@@ -6,13 +6,15 @@
 
 #ifndef HORIZONTALSLICERENDERER_H
 #define HORIZONTALSLICERENDERER_H
+
+
 class HorizontalSliceRenderer : protected QOpenGLFunctions
 {
 public:
     HorizontalSliceRenderer();
     virtual ~HorizontalSliceRenderer();
     void setMapper(HorizontalSliceToImageMapper *mapper);
-    void changeGeometry(float z);
+    void changeGeometry();
     void drawImage(QMatrix4x4 matrix);
     void moveSlice(int z);
     float height = 0;

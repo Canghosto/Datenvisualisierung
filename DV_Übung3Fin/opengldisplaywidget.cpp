@@ -167,9 +167,15 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     horizontalMapper = new HorizontalSliceToImageMapper();
     horizontalMapper->setDataSource(dataSource);
 
+//    horizontalContourMapper = new HorizontalSliceToContourLineMapper;
+//    horizontalContourMapper->setDataSource(dataSource);
+
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
 
     horizontalRenderer = new HorizontalSliceRenderer();
     horizontalRenderer->setMapper(horizontalMapper);
+
+//    horizontalContourRenderer = new HorizontalContourLinesRenderer();
+//    horizontalContourRenderer->setMapper(horizontalContourMapper);
 
 }

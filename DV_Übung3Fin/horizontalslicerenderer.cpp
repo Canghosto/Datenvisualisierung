@@ -44,8 +44,9 @@ void HorizontalSliceRenderer::setMapper(HorizontalSliceToImageMapper *mapper)
     m_mapper = mapper;
 }
 
-void HorizontalSliceRenderer::changeGeometry(float z)
+void HorizontalSliceRenderer::changeGeometry()
 {
+
     // Vertices of a unit cube that represents the bounding box.
     const unsigned int numVertices = 4;
     float unitCubeVertices[numVertices][3] = {
@@ -100,7 +101,6 @@ void HorizontalSliceRenderer::moveSlice(int z)
         height = 0;
     }
     // Vertices of a unit cube that represents the bounding box.
-    std::cout << height << std::flush;
-    changeGeometry(z);
+    changeGeometry();
 
 }

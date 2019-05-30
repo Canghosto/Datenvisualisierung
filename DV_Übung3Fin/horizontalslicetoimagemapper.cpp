@@ -46,4 +46,3 @@ QImage HorizontalSliceToImageMapper::mapSliceToImage(int iz)
     }
     return outputImage;
 }
-

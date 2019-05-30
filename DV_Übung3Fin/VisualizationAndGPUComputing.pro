@@ -11,6 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = VisualizationAndGPUComputing
 TEMPLATE = app
 
+LIBS += -lopengl32
+
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -30,7 +32,9 @@ SOURCES += \
         mainwindow.cpp \
     opengldisplaywidget.cpp \
     datavolumeboundingboxrenderer.cpp \
-	flowdatasource.cpp
+	flowdatasource.cpp \
+    horizontalslicetocontourlinemapper.cpp \
+    horizontalcontourlinesrenderer.cpp
 
 HEADERS += \
     horizontalslicerenderer.h \
@@ -38,11 +42,12 @@ HEADERS += \
         mainwindow.h \
     opengldisplaywidget.h \
     datavolumeboundingboxrenderer.h \
-	flowdatasource.h
+	flowdatasource.h \
+    horizontalslicetocontourlinemapper.h \
+    horizontalcontourlinesrenderer.h
 
 DISTFILES += \
     bbox_fshader.glsl \
     bbox_vshader.glsl \
     hslice_vshader.glsl \
     hslice_fshader.glsl
-
