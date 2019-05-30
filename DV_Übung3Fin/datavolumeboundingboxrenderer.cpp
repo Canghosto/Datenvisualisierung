@@ -42,8 +42,8 @@ void DataVolumeBoundingBoxRenderer::initOpenGLShaders()
 {
     //Uni: /informatik2/students/home/6adibell/Desktop/visualizationandgpucomputing-uebung_02_template
     //Home: C:/Users/Kemal/Desktop/visual new
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, "/informatik2/students/home/4bagdas/Schreibtisch/visual new/bbox_vshader.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, "/informatik2/students/home/4bagdas/Schreibtisch/visual new/bbox_fshader.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, "bbox_vshader.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, "bbox_fshader.glsl");
     shaderProgram.link();
 }
 
