@@ -54,15 +54,14 @@ void HorizontalContourLinesRenderer::drawImage(QMatrix4x4 matrix)
     vertexBuffer.bind();
     shaderProgram.setAttributeBuffer("vertexPosition", GL_FLOAT, 0, 3, 3*sizeof(float));
     shaderProgram.enableAttributeArray("vertexPosition");
+    shaderProgram.setUniformValue("mvpMatrix", matrix);
 
     QVector<QVector3D> contour = m_mapper->mapSliceToContourLineSegments(0);
-    std::cout << contour.data() << std::flush;
-    const int textureUnit = 0; // select a texture unit
+    shaderProgram.setAttributeArray("contour", contour.constData());
 
-    shaderProgram.setUniformValue("mvpMatrix", matrix);
     // Issue OpenGL draw commands.
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glLineWidth(9);
-    glDrawArrays(GL_LINE, 0, 4);
+    glDrawArrays(GL_LINES, 0, 2);
 
 }

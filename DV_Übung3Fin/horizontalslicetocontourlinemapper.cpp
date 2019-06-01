@@ -17,42 +17,29 @@ void HorizontalSliceToContourLineMapper::setDataSource(FlowDataSource *dataSourc
     m_dataSource = dataSource;
 }
 
-float HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float verticesOne, float verticesTwo, float threshold)
+float HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float higher, float lower)
 {
-    float isoVertice;
-    if(verticesOne > verticesTwo){
-        isoVertice = verticesOne -((verticesOne - verticesTwo)/2);
-    }
-    else{
-        isoVertice = verticesTwo -((verticesTwo - verticesOne)/2);
-    }
-    return isoVertice;
+
+    return 0;
 }
 
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(int iz)
 {
     float threshold = 0;
-    QVector<QVector3D> list;
-    QVector3D *data = list.data();
-
+    QVector<QVector3D> list(100);
+    data = list.data();
     for(int y = 0; y < 15;y++)
     {
         for(int x = 0; x < 15;x++)
         {
             float dataSource = m_dataSource->getDataValue(iz,y,x,0);
-            float dataSource2 = m_dataSource->getDataValue(iz,y+1,x,0);
-            float dataSource3 = m_dataSource->getDataValue(iz,y,x+1,0);
-            float dataSource4 = m_dataSource->getDataValue(iz,y+1,x+1,0);
-            if(dataSource){
-
-            }
-            list.append(isoCroosingBetweenTwoVertices(dataSource, dataSource2, threshold));
-
-
-            //data[x][y] = isoCroosingBetweenTwoVertices();
+//            float dataSource1 = m_dataSource->getDataValue(iz,y,x,0);
+//            float dataSource2 = m_dataSource->getDataValue(iz,y,x,0);
+//            float dataSource3 = m_dataSource->getDataValue(iz,y,x,0);
+//            if(dataSource < threshold < dataSource1){
+//                ;
+//            }
         }
     }
     return list;
 }
-
-
