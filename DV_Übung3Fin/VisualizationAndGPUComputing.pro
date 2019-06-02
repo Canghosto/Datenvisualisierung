@@ -49,5 +49,7 @@ HEADERS += \
 DISTFILES += \
     bbox_fshader.glsl \
     bbox_vshader.glsl \
+    hcslice_fshader.glsl \
+    hcslice_vshader.glsl \
     hslice_vshader.glsl \
     hslice_fshader.glsl

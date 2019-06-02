@@ -61,6 +61,7 @@ void OpenGLDisplayWidget::paintGL()
     // Call renderer modules.
     bboxRenderer->drawBoundingBox(mvpMatrix);
     horizontalRenderer->drawImage(mvpMatrix);
+    horizontalContourRenderer->drawImage(mvpMatrix);
     // ....
 }
 
@@ -165,17 +166,17 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     dataSource = new FlowDataSource();
     // Initialize mapper modules.
     horizontalMapper = new HorizontalSliceToImageMapper();
-    horizontalMapper->setDataSource(dataSource);
-
     horizontalContourMapper = new HorizontalSliceToContourLineMapper;
+
+    horizontalMapper->setDataSource(dataSource);
     horizontalContourMapper->setDataSource(dataSource);
 
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
 
     horizontalRenderer = new HorizontalSliceRenderer();
-    horizontalRenderer->setMapper(horizontalMapper);
-
     horizontalContourRenderer = new HorizontalContourLinesRenderer();
+
+    horizontalRenderer->setMapper(horizontalMapper);
     horizontalContourRenderer->setMapper(horizontalContourMapper);
 
 }

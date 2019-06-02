@@ -26,8 +26,8 @@ void HorizontalContourLinesRenderer::setMapper(HorizontalSliceToContourLineMappe
 
 void HorizontalContourLinesRenderer::initOpenGLShaders()
 {
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, "hslice_vshader.glsl");
-    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, "hslice_fshader.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Vertex, "hcslice_vshader.glsl");
+    shaderProgram.addShaderFromSourceFile(QOpenGLShader::Fragment, "hcslice_fshader.glsl");
     shaderProgram.link();
 }
 
@@ -62,6 +62,6 @@ void HorizontalContourLinesRenderer::drawImage(QMatrix4x4 matrix)
     // Issue OpenGL draw commands.
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glLineWidth(9);
-    glDrawArrays(GL_LINES, 0, 2);
+    glDrawArrays(GL_LINE, 0, 4);
 
 }
