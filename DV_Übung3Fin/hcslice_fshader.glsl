@@ -1,9 +1,9 @@
 #version 330
-uniform sampler2D linesegment;
+uniform sampler2D texture;
 smooth in vec2 texCoord;
 
-void main(void)
+void main()
 {
-    gl_FragColor = texture2D(linesegment, texCoord);
+    gl_FragColor = vec4(1, 1, 0, 1);
 }
 

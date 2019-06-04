@@ -16,7 +16,7 @@ HorizontalContourLinesRenderer::HorizontalContourLinesRenderer()
 
 HorizontalContourLinesRenderer::~HorizontalContourLinesRenderer()
 {
-
+    vertexBuffer.destroy();
 }
 
 void HorizontalContourLinesRenderer::setMapper(HorizontalSliceToContourLineMapper *mapper)
@@ -44,7 +44,7 @@ void HorizontalContourLinesRenderer::initBoundingBoxGeometry()
     vertexBuffer.allocate(unitCubeVertices, numVertices * 3 * sizeof(float));
 }
 
-void HorizontalContourLinesRenderer::drawImage(QMatrix4x4 matrix)
+void HorizontalContourLinesRenderer::drawContourLine(QMatrix4x4 matrix)
 {
 
     // Tell OpenGL to use the shader program of this class.
@@ -54,14 +54,17 @@ void HorizontalContourLinesRenderer::drawImage(QMatrix4x4 matrix)
     vertexBuffer.bind();
     shaderProgram.setAttributeBuffer("vertexPosition", GL_FLOAT, 0, 3, 3*sizeof(float));
     shaderProgram.enableAttributeArray("vertexPosition");
+
     shaderProgram.setUniformValue("mvpMatrix", matrix);
 
     QVector<QVector3D> contour = m_mapper->mapSliceToContourLineSegments(0);
-    shaderProgram.setAttributeArray("contour", contour.constData());
+    vertexBuffer.allocate(contour.data(), contour.length()*sizeof (QVector3D));
+    //std::cout << contour.first().y() << std::flush;
+
 
     // Issue OpenGL draw commands.
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glLineWidth(9);
-    glDrawArrays(GL_LINE, 0, 4);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glLineWidth(3);
+    glDrawArrays(GL_LINES, 0, contour.size());
 
 }

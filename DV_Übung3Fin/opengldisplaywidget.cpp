@@ -3,6 +3,7 @@
 #include <QLabel>
 #include "math.h"
 #include "horizontalslicerenderer.h"
+#include "horizontalcontourlinesrenderer.h"
 
 OpenGLDisplayWidget::OpenGLDisplayWidget(QWidget *parent)
     : QOpenGLWidget(parent),
@@ -17,8 +18,10 @@ OpenGLDisplayWidget::~OpenGLDisplayWidget()
     // Clean up visualization pipeline.
     delete dataSource;
     delete horizontalMapper;
+    delete horizontalContourMapper;
     delete bboxRenderer;
     delete horizontalRenderer;
+    delete horizontalContourRenderer;
     // ....
 }
 
@@ -61,7 +64,7 @@ void OpenGLDisplayWidget::paintGL()
     // Call renderer modules.
     bboxRenderer->drawBoundingBox(mvpMatrix);
     horizontalRenderer->drawImage(mvpMatrix);
-    horizontalContourRenderer->drawImage(mvpMatrix);
+    horizontalContourRenderer->drawContourLine(mvpMatrix);
     // ....
 }
 
@@ -166,17 +169,17 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     dataSource = new FlowDataSource();
     // Initialize mapper modules.
     horizontalMapper = new HorizontalSliceToImageMapper();
-    horizontalContourMapper = new HorizontalSliceToContourLineMapper;
-
     horizontalMapper->setDataSource(dataSource);
+
+    horizontalContourMapper = new HorizontalSliceToContourLineMapper;
     horizontalContourMapper->setDataSource(dataSource);
 
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
 
     horizontalRenderer = new HorizontalSliceRenderer();
-    horizontalContourRenderer = new HorizontalContourLinesRenderer();
-
     horizontalRenderer->setMapper(horizontalMapper);
+
+    horizontalContourRenderer = new HorizontalContourLinesRenderer();
     horizontalContourRenderer->setMapper(horizontalContourMapper);
 
 }

@@ -71,6 +71,8 @@ OBJECTS       = release/horizontalslicerenderer.o \
 
 DIST          = bbox_fshader.glsl \
 		bbox_vshader.glsl \
+		hcslice_fshader.glsl \
+		hcslice_vshader.glsl \
 		hslice_vshader.glsl \
 		hslice_fshader.glsl horizontalslicerenderer.h \
 		horizontalslicetoimagemapper.h \
@@ -247,7 +249,7 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qicon.h \
 		release/moc_predefs.h \
 		C:/Qt/5.12.3/mingw73_64/bin/moc.exe
-	C:\Qt\5.12.3\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/Canghosto/Desktop/Datenvisualisierung-master/DV_Übung3Fin/release/moc_predefs.h -IC:/Qt/5.12.3/mingw73_64/mkspecs/win32-g++ -IC:/Users/Canghosto/Desktop/Datenvisualisierung-master/DV_Übung3Fin -IC:/Qt/5.12.3/mingw73_64/include -IC:/Qt/5.12.3/mingw73_64/include/QtWidgets -IC:/Qt/5.12.3/mingw73_64/include/QtGui -IC:/Qt/5.12.3/mingw73_64/include/QtANGLE -IC:/Qt/5.12.3/mingw73_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o release\moc_mainwindow.cpp
+	C:\Qt\5.12.3\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/Canghosto/Desktop/DV/Datenvisualisierung/DV_Übung3Fin/release/moc_predefs.h -IC:/Qt/5.12.3/mingw73_64/mkspecs/win32-g++ -IC:/Users/Canghosto/Desktop/DV/Datenvisualisierung/DV_Übung3Fin -IC:/Qt/5.12.3/mingw73_64/include -IC:/Qt/5.12.3/mingw73_64/include/QtWidgets -IC:/Qt/5.12.3/mingw73_64/include/QtGui -IC:/Qt/5.12.3/mingw73_64/include/QtANGLE -IC:/Qt/5.12.3/mingw73_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include mainwindow.h -o release\moc_mainwindow.cpp
 
 release/moc_opengldisplaywidget.cpp: opengldisplaywidget.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtWidgets/QOpenGLWidget \
@@ -386,10 +388,12 @@ release/moc_opengldisplaywidget.cpp: opengldisplaywidget.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qgenericmatrix.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/QOpenGLBuffer \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopenglbuffer.h \
+		horizontalcontourlinesrenderer.h \
+		horizontalslicetocontourlinemapper.h \
 		datavolumeboundingboxrenderer.h \
 		release/moc_predefs.h \
 		C:/Qt/5.12.3/mingw73_64/bin/moc.exe
-	C:\Qt\5.12.3\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/Canghosto/Desktop/Datenvisualisierung-master/DV_Übung3Fin/release/moc_predefs.h -IC:/Qt/5.12.3/mingw73_64/mkspecs/win32-g++ -IC:/Users/Canghosto/Desktop/Datenvisualisierung-master/DV_Übung3Fin -IC:/Qt/5.12.3/mingw73_64/include -IC:/Qt/5.12.3/mingw73_64/include/QtWidgets -IC:/Qt/5.12.3/mingw73_64/include/QtGui -IC:/Qt/5.12.3/mingw73_64/include/QtANGLE -IC:/Qt/5.12.3/mingw73_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include opengldisplaywidget.h -o release\moc_opengldisplaywidget.cpp
+	C:\Qt\5.12.3\mingw73_64\bin\moc.exe $(DEFINES) --include C:/Users/Canghosto/Desktop/DV/Datenvisualisierung/DV_Übung3Fin/release/moc_predefs.h -IC:/Qt/5.12.3/mingw73_64/mkspecs/win32-g++ -IC:/Users/Canghosto/Desktop/DV/Datenvisualisierung/DV_Übung3Fin -IC:/Qt/5.12.3/mingw73_64/include -IC:/Qt/5.12.3/mingw73_64/include/QtWidgets -IC:/Qt/5.12.3/mingw73_64/include/QtGui -IC:/Qt/5.12.3/mingw73_64/include/QtANGLE -IC:/Qt/5.12.3/mingw73_64/include/QtCore -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include opengldisplaywidget.h -o release\moc_opengldisplaywidget.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -864,6 +868,8 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qgenericmatrix.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/QOpenGLBuffer \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopenglbuffer.h \
+		horizontalcontourlinesrenderer.h \
+		horizontalslicetocontourlinemapper.h \
 		datavolumeboundingboxrenderer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
@@ -1004,6 +1010,8 @@ release/opengldisplaywidget.o: opengldisplaywidget.cpp opengldisplaywidget.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qgenericmatrix.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/QOpenGLBuffer \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopenglbuffer.h \
+		horizontalcontourlinesrenderer.h \
+		horizontalslicetocontourlinemapper.h \
 		datavolumeboundingboxrenderer.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/QMouseEvent \
 		C:/Qt/5.12.3/mingw73_64/include/QtWidgets/QLabel \
@@ -1188,7 +1196,10 @@ release/horizontalslicetocontourlinemapper.o: horizontalslicetocontourlinemapper
 		C:/Qt/5.12.3/mingw73_64/include/QtCore/qobject_impl.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtCore/qline.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qpainterpath.h \
-		C:/Qt/5.12.3/mingw73_64/include/QtGui/QColor
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/QColor \
+		C:/Qt/5.12.3/mingw73_64/include/QtCore/QVector \
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/QVector3D \
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/qvector3d.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\horizontalslicetocontourlinemapper.o horizontalslicetocontourlinemapper.cpp
 
 release/horizontalcontourlinesrenderer.o: horizontalcontourlinesrenderer.cpp horizontalcontourlinesrenderer.h \
@@ -1305,7 +1316,9 @@ release/horizontalcontourlinesrenderer.o: horizontalcontourlinesrenderer.cpp hor
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qquaternion.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/qgenericmatrix.h \
 		C:/Qt/5.12.3/mingw73_64/include/QtGui/QOpenGLBuffer \
-		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopenglbuffer.h
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopenglbuffer.h \
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/QOpenGLTexture \
+		C:/Qt/5.12.3/mingw73_64/include/QtGui/qopengltexture.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\horizontalcontourlinesrenderer.o horizontalcontourlinesrenderer.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 

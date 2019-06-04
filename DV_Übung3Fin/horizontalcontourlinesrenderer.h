@@ -14,7 +14,7 @@ public:
     HorizontalContourLinesRenderer();
     virtual ~HorizontalContourLinesRenderer();
     void setMapper(HorizontalSliceToContourLineMapper *mapper);
-    void drawImage(QMatrix4x4 matrix);
+    void drawContourLine(QMatrix4x4 matrix);
 private:
     void initOpenGLShaders();
     void initBoundingBoxGeometry();

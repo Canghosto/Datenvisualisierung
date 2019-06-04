@@ -18,31 +18,43 @@ void HorizontalSliceToContourLineMapper::setDataSource(FlowDataSource *dataSourc
     m_dataSource = dataSource;
 }
 
-float HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float higher, float lower)
+
+QVector3D HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float iz, float vertice1,float vertices2, float threshold)
 {
-    return 0;
+//    QVector3D iso(0,0,0);
+
+//    return iso ;
 }
 
 QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegments(int iz)
 {
-    float threshold = 0;
+
+    float threshold = 0.3;
+    int component = 0;
     QVector<QVector3D> list;
-    data = list.data();
-    for(int y = 0; y < 15;y++)
+
+    for(float y = 0; y < 16;y++)
     {
-        for(int x = 0; x < 15;x++)
+        for(float x = 0; x < 16;x++)
         {
-            float dataSource = m_dataSource->getDataValue(iz,y,x,0);
-            float dataSource2 = m_dataSource->getDataValue(iz,y + 1,x,0);
-//            float dataSource1 = m_dataSource->getDataValue(iz,y,x,0);
-//            float dataSource2 = m_dataSource->getDataValue(iz,y,x,0);
-//            float dataSource3 = m_dataSource->getDataValue(iz,y,x,0);
-//            if(dataSource < threshold < dataSource1){
-//                ;
-//            }
-            list.append(QVector3D(x,y,iz));
+            float dataValue1 = m_dataSource->getDataValue(iz,y,x,component);
+            float dataValue2 = m_dataSource->getDataValue(iz,y,x+1,component);
+            float dataValue3 = m_dataSource->getDataValue(iz,y+1,x,component);
+            float dataValue4 = m_dataSource->getDataValue(iz,y+1,x+1,component);
+            if((dataValue1 == dataValue2 == dataValue3 == dataValue4) ||
+                    (threshold < dataValue1 && threshold < dataValue2 && threshold < dataValue3 && threshold < dataValue4) ||
+                    (threshold > dataValue1 && threshold > dataValue2 && threshold > dataValue3 && threshold > dataValue4)){
+
+            }
+            else if((dataValue1 > threshold > dataValue2) || (dataValue1 < threshold < dataValue2)){
+//                list.append(isoCroosingBetweenTwoVertices(iz, y,x, threshold));
+                   list.append(QVector3D(x,y,iz));
+            }
         }
     }
 
+    std::cout << list.first().x();
     return list;
+
 }
+
