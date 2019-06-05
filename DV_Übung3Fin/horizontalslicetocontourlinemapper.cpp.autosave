@@ -32,10 +32,10 @@ QVector3D HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(floa
     float isoValue = (threshold - lowerValue)/(higherValue -lowerValue);
 
     if(vertices1x == vertices2x){
-        iso = QVector3D(vertices1x/16,(vertices1y*(1-isoValue)+vertices2y*isoValue)/16,iz/16);
+        iso = QVector3D(vertices1x/15,(vertices1y*(1-isoValue)+vertices2y*isoValue)/15,iz/15);
     }
     else if (vertices1y == vertices2y) {
-        iso = QVector3D((vertices1x*(1-isoValue)+vertices2x*isoValue)/16,vertices2y/16,iz/16);
+        iso = QVector3D((vertices1x*(1-isoValue)+vertices2x*isoValue)/15,vertices2y/15,iz/15);
     };
 
     return iso;

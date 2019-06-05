@@ -102,5 +102,4 @@ void HorizontalSliceRenderer::moveSlice(int z)
     }
     // Vertices of a unit cube that represents the bounding box.
     changeGeometry();
-
 }
