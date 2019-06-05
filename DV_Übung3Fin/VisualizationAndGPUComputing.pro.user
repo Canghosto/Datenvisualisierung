@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.9.0, 2019-06-05T00:14:40. -->
+<!-- Written by QtCreator 4.9.0, 2019-06-05T08:50:08. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -316,7 +316,7 @@
     <value type="bool" key="RunConfiguration.UseMultiProcess">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
-    <value type="QString" key="RunConfiguration.WorkingDirectory"></value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory">C:/Users/Canghosto/Desktop/DV/Datenvisualisierung/DV_Übung3Fin</value>
     <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/Canghosto/Desktop/Datenvisualisierung-master</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.RunConfigurationCount">1</value>

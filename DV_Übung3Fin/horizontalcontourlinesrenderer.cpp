@@ -59,8 +59,6 @@ void HorizontalContourLinesRenderer::drawContourLine(QMatrix4x4 matrix)
 
     QVector<QVector3D> contour = m_mapper->mapSliceToContourLineSegments(0);
     vertexBuffer.allocate(contour.data(), contour.length()*sizeof (QVector3D));
-    //std::cout << contour.first().y() << std::flush;
-
 
     // Issue OpenGL draw commands.
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
