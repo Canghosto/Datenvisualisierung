@@ -22,7 +22,15 @@ void HorizontalSliceToContourLineMapper::setDataSource(FlowDataSource *dataSourc
 QVector3D HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float iz, float vertice1x,float vertices1y, float vertices2x,float vertices2y,float datavalue1, float datavalue2, float threshold , int component)
 {
     QVector3D iso;
-    float x = fmin(0,1);
+    float higherValue =fmax(datavalue1,datavalue2);
+    float lowerValue = fmin(datavalue1,datavalue2);
+    float isoValue = (threshold - lowerValue)/(higherValue -lowerValue);
+    if(vertice1x == vertices2x){
+        iso = QVector3D(vertice1x,(vertice1x*(1-isoValue)+vertices2y*isoValue),iz);
+    }
+    else {
+        iso = QVector3D(vertices1y,(vertices1y*(1-isoValue)+vertices2x*isoValue),iz);
+    };
 
     return iso ;
 }
@@ -52,13 +60,13 @@ QVector<QVector3D> HorizontalSliceToContourLineMapper::mapSliceToContourLineSegm
                     list.append(isoCroosingBetweenTwoVertices(iz, x , y , x + 1 , y, dataValue1, dataValue2, threshold, component));
                 }
                 if(((threshold - dataValue2) <= (dataValue4 -dataValue2)) ||((threshold - dataValue4) <= (dataValue2 -dataValue4))){
-                    list.append(isoCroosingBetweenTwoVertices(iz, x+1 , y , x + 1 , y+1, dataValue1, dataValue2, threshold, component));
+                    list.append(isoCroosingBetweenTwoVertices(iz, x+1 , y , x + 1 , y+1, dataValue2, dataValue4, threshold, component));
                 }
                 if(((threshold - dataValue4) <= (dataValue3 -dataValue4)) ||((threshold - dataValue3) <= (dataValue4 -dataValue3))){
-                   // list.append(isoCroosingBetweenTwoVertices(iz, x+1 , y , x + 1 , y+1, dataValue1, dataValue2, threshold, component));
+                    list.append(isoCroosingBetweenTwoVertices(iz, x , y + 1 , x + 1 , y+1, dataValue3, dataValue4, threshold, component));
                 }
                 if(((threshold - dataValue3) <= (dataValue1 -dataValue3)) ||((threshold - dataValue1) <= (dataValue3 -dataValue1))){
-                    //list.append(isoCroosingBetweenTwoVertices(iz, x+1 , y , x + 1 , y+1, dataValue1, dataValue2, threshold, component));
+                    list.append(isoCroosingBetweenTwoVertices(iz, x , y , x, y+1, dataValue1, dataValue2, threshold, component));
                 }
             }
         }
