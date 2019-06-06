@@ -129,10 +129,12 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
     if (e->key() == Qt::Key_Up && horizontalRenderer->height < 15)
     {
         horizontalRenderer->moveSlice(1);
+        horizontalContourRenderer->moveSlice(1);
     }
     else if (e->key() == Qt::Key_Down && horizontalRenderer->height > 0)
     {
         horizontalRenderer->moveSlice(-1);
+        horizontalContourRenderer->moveSlice(-1);
     }
     else
     {
@@ -141,6 +143,7 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 
     // Redraw OpenGL.
     horizontalRenderer->drawImage(mvpMatrix);
+    horizontalContourRenderer->drawContourLine(mvpMatrix);
     update();
 }
 
