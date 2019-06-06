@@ -1,8 +1,6 @@
 #include "horizontalcontourlinesrenderer.h"
-#include "horizontalslicetocontourlinemapper.h"
 #include <QOpenGLTexture>
 #include <iostream>
-
 
 HorizontalContourLinesRenderer::HorizontalContourLinesRenderer()
 : vertexBuffer(QOpenGLBuffer::VertexBuffer)
@@ -73,11 +71,11 @@ void HorizontalContourLinesRenderer::drawContourLine(QMatrix4x4 matrix)
     shaderProgram.setUniformValue("mvpMatrix", matrix);
 
     QVector<QVector3D> contour = m_mapper->mapSliceToContourLineSegments(height);
-    vertexBuffer.allocate(contour.data(), contour.length()*sizeof (QVector3D));
+    vertexBuffer.allocate(contour.data(),  contour.length()*sizeof (QVector3D));
 
     // Issue OpenGL draw commands.
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glLineWidth(3);
+    glLineWidth(4);
     glDrawArrays(GL_LINES, 0, contour.size());
 
 }

@@ -8,6 +8,8 @@ public:
     float getDataValue(int iz, int iy, int ix, int ic);
     void printValuesOfHorizontalSlice(int iz);
     void printInTriples();
+    float getHighest();
+    float getLowest();
     void gen_tornado( int xs, int ys, int zs, int time, float *tornado );
     ~FlowDataSource();
 

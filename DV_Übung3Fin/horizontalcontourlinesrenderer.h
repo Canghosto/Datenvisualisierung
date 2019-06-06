@@ -14,10 +14,10 @@ public:
     HorizontalContourLinesRenderer();
     virtual ~HorizontalContourLinesRenderer();
     void setMapper(HorizontalSliceToContourLineMapper *mapper);
-    void drawContourLine(QMatrix4x4 matrix);
     void changeGeometry();
+    void drawContourLine(QMatrix4x4 matrix);
     void moveSlice(int z);
-    float height=0;
+    float height = 0;
 private:
     void initOpenGLShaders();
     void initBoundingBoxGeometry();

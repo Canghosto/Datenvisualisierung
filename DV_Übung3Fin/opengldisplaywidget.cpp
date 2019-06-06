@@ -126,12 +126,12 @@ void OpenGLDisplayWidget::wheelEvent(QWheelEvent *e)
 
 void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 {
-    if (e->key() == Qt::Key_Up && horizontalRenderer->height < 15)
+    if (e->key() == Qt::Key_Up && horizontalRenderer->height < 15 && horizontalContourRenderer->height < 15)
     {
-        horizontalRenderer->moveSlice(1);
         horizontalContourRenderer->moveSlice(1);
+        horizontalRenderer->moveSlice(1);
     }
-    else if (e->key() == Qt::Key_Down && horizontalRenderer->height > 0)
+    else if (e->key() == Qt::Key_Down && horizontalRenderer->height > 0 && horizontalContourRenderer->height > 0)
     {
         horizontalRenderer->moveSlice(-1);
         horizontalContourRenderer->moveSlice(-1);
@@ -143,7 +143,8 @@ void OpenGLDisplayWidget::keyPressEvent(QKeyEvent *e)
 
     // Redraw OpenGL.
     horizontalRenderer->drawImage(mvpMatrix);
-    horizontalContourRenderer->drawContourLine(mvpMatrix);
+    //horizontalContourRenderer->drawContourLine(mvpMatrix);
+
     update();
 }
 
@@ -172,17 +173,18 @@ void OpenGLDisplayWidget::initVisualizationPipeline()
     dataSource = new FlowDataSource();
     // Initialize mapper modules.
     horizontalMapper = new HorizontalSliceToImageMapper();
-    horizontalMapper->setDataSource(dataSource);
+    horizontalContourMapper = new HorizontalSliceToContourLineMapper();
 
-    horizontalContourMapper = new HorizontalSliceToContourLineMapper;
+    horizontalMapper->setDataSource(dataSource);
     horizontalContourMapper->setDataSource(dataSource);
 
     bboxRenderer = new DataVolumeBoundingBoxRenderer();
 
     horizontalRenderer = new HorizontalSliceRenderer();
-    horizontalRenderer->setMapper(horizontalMapper);
-
     horizontalContourRenderer = new HorizontalContourLinesRenderer();
+
+    horizontalRenderer->setMapper(horizontalMapper);
     horizontalContourRenderer->setMapper(horizontalContourMapper);
+
 
 }

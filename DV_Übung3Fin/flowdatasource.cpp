@@ -1,5 +1,6 @@
 #include "flowdatasource.h"
 #include <math.h>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -37,6 +38,22 @@ void FlowDataSource::printValuesOfHorizontalSlice(int iz)
             std::cout << getDataValue(iz,y,x,3) << std::endl;
         }
     }
+}
+
+float FlowDataSource::getHighest()
+{
+    float max = 0;
+    for (int i = 0; i< dataGridPoints*dataGridPoints*dataGridPoints*3; i++) {
+        if(cartesianDataGrid[i] > max){
+            max = cartesianDataGrid[i];
+        }
+    }
+    return max;
+}
+
+float FlowDataSource::getLowest()
+{
+
 }
 
 void FlowDataSource::gen_tornado(int xs, int ys, int zs, int time, float *tornado)
