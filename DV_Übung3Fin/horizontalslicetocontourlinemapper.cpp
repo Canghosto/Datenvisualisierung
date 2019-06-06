@@ -30,7 +30,7 @@ QVector3D HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(floa
     float higherValue = fmax(dataValue1,dataValue2);
 
     float isoValue = (threshold - lowerValue)/(higherValue -lowerValue);
-
+//TODO: Coordinates with negative value 
     if(vertices1x == vertices2x){
         iso = QVector3D(vertices1x/16,(vertices1y*(1-isoValue)+vertices2y*isoValue)/16,iz/16);
     }
