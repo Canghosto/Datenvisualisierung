@@ -21,7 +21,7 @@ void HorizontalSliceToContourLineMapper::setDataSource(FlowDataSource *dataSourc
 
 QVector3D HorizontalSliceToContourLineMapper::isoCroosingBetweenTwoVertices(float iz, float vertice1x,float vertices1y, float vertices2x,float vertices2y, float threshold, int component)
 {
-    QVector3D iso(1,2,0);
+    QVector3D iso;
 
     return iso ;
 }
